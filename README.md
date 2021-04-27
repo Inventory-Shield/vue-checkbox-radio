@@ -18,7 +18,7 @@ Check out **[demo and styling examples](http://mariomka.github.io/vue-checkbox-r
 **Checkbox**
 
 ```html
-<checkbox name="terms" value="1">
+<checkbox name="terms" model-value="1">
 	I agree to the <a href="#">terms of service</a>
 </checkbox>
 ```
@@ -26,10 +26,10 @@ Check out **[demo and styling examples](http://mariomka.github.io/vue-checkbox-r
 **Radio**
 
 ```html
-<radio name="robot" value="1">
+<radio name="robot" model-value="1">
 	I'm a robot
 </radio>
-<radio name="robot" value="0">
+<radio name="robot" model-value="0">
 	I'm not a robot
 </radio>
 ```
@@ -56,7 +56,7 @@ Register the plugin.
 ```js
 import CheckboxRadio from 'vue-checkbox-radio';
 
-Vue.use(CheckboxRadio);
+app.use(CheckboxRadio);
 ```
 
 Or register components manually.
@@ -64,8 +64,8 @@ Or register components manually.
 ```js
 import {Checkbox, Radio} from 'vue-checkbox-radio';
 
-Vue.component('checkbox', Checkbox);
-Vue.component('radio', Radio);
+app.component('checkbox', Checkbox);
+app.component('radio', Radio);
 ```
 
 ## Params
@@ -78,7 +78,7 @@ id | `string` | checkbox-id-(element uid)
 class-name | `string` | `null`
 name | `string` | `null`
 v-model | `string`, `boolean` or `array` | `undefined`
-value | `string` or `boolean` | `null`
+model-value | `string` or `boolean` | `null`
 checked | `boolean` | `false`
 required | `boolean` | `false`
 disabled | `boolean` | `false`
@@ -91,14 +91,14 @@ id | `string` | radio-id-(element uid)
 class-name | `string` | `null`
 name | `string` | `null`
 v-model | `string` or `boolean` | `undefined`
-value | `string` or `boolean` | `null`
+model-value | `string` or `boolean` | `null`
 checked | `boolean` | `false`
 required | `boolean` | `false`
 disabled | `boolean` | `false`
 
 ## Events
 
-Both components emit the `input` event to work with `v-model`.
+Both components emit the `update:modelValue` event to work with `v-model`.
 
 ## Full example
 
