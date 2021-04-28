@@ -1,6 +1,6 @@
 {
   "name": "@inventory-shield/vue-checkbox-radio",
-  "version": "0.7.1",
+  "version": "0.7.3",
   "description": "Checkbox and radio component for Vue.js 3",
   "keywords": [
     "checkbox",
@@ -14,7 +14,8 @@
   "scripts": {
     "build": "webpack --mode=production --progress",
     "docs": "webpack --mode=production --progress --config docs/webpack.config.js",
-    "docs-watch": "webpack --progress --config docs/webpack.config.js --watch"
+    "docs-watch": "webpack --progress --config docs/webpack.config.js --watch",
+    "prepublishOnly": "npm run build"
   },
   "author": {
     "name": "Mario Juárez",
