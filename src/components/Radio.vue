@@ -69,17 +69,20 @@
     </div>
 </template>
 
-<script>
-    export default {
+<script lang="ts">
+    import { defineComponent } from 'vue';
+    import type { PropType } from 'vue';
+
+    export default defineComponent({
         props: {
             id: {
                 type: String,
                 default: function () {
-                    return 'radio-id-' + this._uid;
+                    return 'radio-id-' + Math.random() * 300;
                 },
             },
             name: {
-                type: String,
+                type: String as PropType<string | null>,
                 default: null,
             },
             value: {
@@ -89,7 +92,7 @@
                 default: undefined,
             },
             className: {
-                type: String,
+                type: String as PropType<string | null>,
                 default: null,
             },
             checked: {
@@ -110,7 +113,7 @@
         emits: ['update:modelValue'],
 
         computed: {
-            state() {
+            state(): boolean {
                 if (this.modelValue === undefined) {
                     return this.checked;
                 }
@@ -120,17 +123,17 @@
         },
 
         methods: {
-            onChange() {
+            onChange(): void {
                 this.toggle();
             },
 
-            toggle() {
+            toggle(): void {
                 this.$emit('update:modelValue', this.state ? '' : this.value);
             }
         },
 
         watch: {
-            checked(newValue) {
+            checked(newValue: boolean) {
                 if (newValue !== this.state) {
                     this.toggle();
                 }
@@ -142,5 +145,5 @@
                 this.toggle();
             }
         },
-    }
+    });
 </script>

@@ -72,17 +72,20 @@
     </div>
 </template>
 
-<script>
-    export default {
+<script lang="ts">
+    import { defineComponent } from 'vue';
+    import type { PropType } from 'vue';
+
+    export default defineComponent({
         props: {
             id: {
                 type: String,
                 default: function () {
-                    return 'checkbox-id-' + this._uid;
+                    return 'checkbox-id-' + Math.random() * 300;
                 },
             },
             name: {
-                type: String,
+                type: String as PropType<string | null>,
                 default: null,
             },
             value: {
@@ -92,7 +95,7 @@
                 default: undefined,
             },
             className: {
-                type: String,
+                type: String as PropType<string | null>,
                 default: null,
             },
             checked: {
@@ -113,13 +116,13 @@
         emits: ['update:modelValue'],
 
         computed: {
-            state() {
+            state(): boolean {
                 if (this.modelValue === undefined) {
                     return this.checked;
                 }
 
                 if (Array.isArray(this.modelValue)) {
-                    return this.modelValue.indexOf(this.value) > -1;
+                    return (this.modelValue as unknown as any[]).indexOf(this.value) > -1;
                 }
 
                 return !!this.modelValue;
@@ -127,15 +130,15 @@
         },
 
         methods: {
-            onChange() {
+            onChange(): void {
                 this.toggle();
             },
 
-            toggle() {
+            toggle(): void {
                 let value;
 
                 if (Array.isArray(this.modelValue)) {
-                    value = this.modelValue.slice(0);
+                    value = (this.modelValue as unknown as any[]).slice(0);
 
                     if (this.state) {
                         value.splice(value.indexOf(this.value), 1);
@@ -151,7 +154,7 @@
         },
 
         watch: {
-            checked(newValue) {
+            checked(newValue: boolean) {
                 if (newValue !== this.state) {
                     this.toggle();
                 }
@@ -163,5 +166,5 @@
                 this.toggle();
             }
         },
-    };
+    });
 </script>

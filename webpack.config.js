@@ -4,7 +4,9 @@ const { VueLoaderPlugin } = require("vue-loader");
 module.exports = {
     context: __dirname,
 
-    entry: './src/index.js',
+    devtool: 'source-map',
+
+    entry: './src/index.ts',
 
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -21,8 +23,11 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.js$/,
-                use: 'babel-loader',
+                test: /\.ts$/,
+                loader: 'ts-loader',
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                },
                 exclude: /node_modules/,
             },
             {
@@ -37,7 +42,10 @@ module.exports = {
     ],
 
     resolve: {
-        extensions: ['.js', '.vue'],
+        extensions: ['.ts', '.js', '.vue'],
+        alias: {
+            vue: '@vue/runtime-dom'
+        }
     },
 
     externals: {
