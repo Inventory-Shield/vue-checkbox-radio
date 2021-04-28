@@ -1,7 +1,7 @@
 {
-  "name": "vue-checkbox-radio",
-  "version": "0.6.0",
-  "description": "Checkbox and radio component for Vue.js",
+  "name": "@inventory-shield/vue-checkbox-radio",
+  "version": "0.7.0",
+  "description": "Checkbox and radio component for Vue.js 3",
   "keywords": [
     "checkbox",
     "radio",
@@ -21,11 +21,11 @@
     "email": "mario@mjp.one",
     "url": "http://www.mjp.one"
   },
-  "repository": "mariomka/vue-checkbox-radio",
+  "repository": "Inventory-Shield/vue-checkbox-radio",
   "bugs": {
-    "url": "https://github.com/mariomka/vue-checkbox-radio/issues"
+    "url": "https://github.com/Inventory-Shield/vue-checkbox-radio/issues"
   },
-  "homepage": "https://github.com/mariomka/vue-checkbox-radio#readme",
+  "homepage": "https://github.com/Inventory-Shield/vue-checkbox-radio#readme",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.16",
