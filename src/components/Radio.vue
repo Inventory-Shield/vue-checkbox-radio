@@ -71,11 +71,6 @@
 
 <script>
     export default {
-        model: {
-            prop: 'modelValue',
-            event: 'input'
-        },
-
         props: {
             id: {
                 type: String,
@@ -112,6 +107,8 @@
             model: {}
         },
 
+        emits: ['update:modelValue'],
+
         computed: {
             state() {
                 if (this.modelValue === undefined) {
@@ -128,7 +125,7 @@
             },
 
             toggle() {
-                this.$emit('input', this.state ? '' : this.value);
+                this.$emit('update:modelValue', this.state ? '' : this.value);
             }
         },
 
